@@ -1,0 +1,40 @@
+.input{
+    background-color: rgba(134, 138, 135, 0.454);
+    border-style: none;
+
+    border-radius: 0.4em;
+    padding: 1em;
+    width: 99%;
+    
+}
+
+.form{
+margin-bottom: 1em;
+ transform: scaleY(1);
+  transform-origin: top; 
+  transition: transform 0.5s cubic-bezier(0.15, 1, 0.3, 1);
+
+
+
+}
+.container{
+    width: fit-content;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    border-radius: 2em;
+}
+
+.hidden{
+    height: 0;
+  
+ 
+  transform: scaleY(0);
+  
+}
+
+.btn{
+    margin-top: 1em;
+}
