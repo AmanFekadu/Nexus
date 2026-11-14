@@ -2,10 +2,9 @@
 import React, { useState } from 'react'
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { faSquareMinus } from '@fortawesome/free-regular-svg-icons'
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
-import styles from './ProfAcc.module.css'
+import styles from '../style/ProfAcc.module.css'
 
 function ProfAcc() {
     const [active,setActive]=useState(false)

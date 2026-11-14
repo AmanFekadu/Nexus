@@ -1,14 +1,10 @@
-import React from 'react'
-import GenralAcc from './Components/GenralAcc'
-import EduAcc from './Components/EduAcc'
-import ProfAcc from './Components/ProfAcc'
+
+import Interface from './Components/page/Interface'
 
 function App() {
   return (
     <div>
-      <GenralAcc/>
-      <EduAcc/>
-      <ProfAcc/>
+      <Interface/>
     </div>
   )
 }

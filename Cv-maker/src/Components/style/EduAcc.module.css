@@ -18,7 +18,7 @@ margin-bottom: 1em;
 
 }
 .container{
-    width: fit-content;
+    width: 20em;
     background-color: white;
     display: flex;
     flex-direction: column;

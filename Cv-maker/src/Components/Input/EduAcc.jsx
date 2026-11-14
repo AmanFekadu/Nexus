@@ -3,7 +3,7 @@ import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import { faSquareMinus } from '@fortawesome/free-regular-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './EduAcc.module.css'
+import styles from '../style/EduAcc.module.css'
 function EduAcc() {
     const [active,setActive]=useState(false)
 

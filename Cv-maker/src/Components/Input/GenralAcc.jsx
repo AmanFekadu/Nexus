@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './GenralAcc.module.css'
+import styles from '../style/GenralAcc.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'

@@ -1,0 +1,12 @@
+.container{
+    
+    height: 100vh;
+    background-color: white;
+    width: 210mm;
+    min-height: 297mm;
+}
+
+.head{
+    background-color: black;
+    
+}
