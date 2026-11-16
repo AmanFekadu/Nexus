@@ -8,5 +8,7 @@
 
 .head{
     background-color: black;
-    
+    width: inherit;
+    height: 200px;
+
 }
