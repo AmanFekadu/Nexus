@@ -4,11 +4,28 @@
     background-color: white;
     width: 210mm;
     min-height: 297mm;
+
 }
 
 .head{
     background-color: black;
     width: inherit;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1em;
+    font-size: small;
 
+}
+.head div{
+    display: flex;
+    gap: 2em;
+}
+
+.lks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

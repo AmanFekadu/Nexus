@@ -11,6 +11,7 @@ function Interface() {
     'email':'',
     'phNum':'',
     'cp':'',
+    'lnk':'',
     'smry':'',
   })
 

@@ -38,7 +38,9 @@ function GenralAcc({genInfo,onSave}) {
             <h3>Phone Number</h3>
             <input className={styles.input} type="tel" required placeholder='0911111111' value={formData.phNum} name='phNum' onChange={handleChange}/>
             <h3>City and Province</h3>
-            <input className={styles.input} type="text" placeholder='Addis Ababa, Ethiopia' value={formData.cp} name='cp'  onChange={handleChange}/>
+            <input className={styles.input} type="text" placeholder='Addis Ababa, Ethiopia' value={formData.cp} name='cp'  onChange={handleChange} required/>
+            <h3>Linkedln</h3>
+            <input type="text" className={styles.input} name='lnk' value={formData.lnk} onChange={handleChange} />
             <h3>Professional Summary</h3>
             <textarea  className={styles.input} value={formData.smry} name='smry' onChange={handleChange}></textarea>
             <button className={styles.btn} type='submit'>Save</button>
