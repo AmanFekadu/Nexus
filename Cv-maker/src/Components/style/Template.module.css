@@ -8,7 +8,7 @@
 }
 
 .head{
-    background-color: black;
+    background-color: rgb(44, 56, 74);
     width: inherit;
     height: 200px;
     display: flex;
@@ -16,7 +16,7 @@
     align-items: center;
     flex-direction: column;
     line-height: 1em;
-    font-size: small;
+
 
 }
 .head div{
@@ -28,4 +28,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: small;
+}
+
+.prf{
+    margin: 4em;
+}
+
+.prf h3{
+    border-bottom: 1px solid black;
+    padding: 0.5em;
+}
+
+.edbx{
+    display: flex;
+    gap: 3em;
+}
+
+.edu{
+    margin: 4em;
+}
+
+.edu h3{
+    border-bottom: 1px solid black;
+    padding: 0.5em;
+
 }

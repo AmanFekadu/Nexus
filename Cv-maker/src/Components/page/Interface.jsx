@@ -15,6 +15,12 @@ function Interface() {
     'smry':'',
   })
 
+  const [edu,setEdu]=useState([])
+
+  const handleAdd=(newed)=>{
+    setEdu((prev)=>[...prev,newed])
+  }
+
   const handleSave=(newInfo)=>{
     setGenral(newInfo)
   }
@@ -23,10 +29,10 @@ function Interface() {
         <div className={styles.container}>
           <div>
             <GenralAcc genInfo={genral} onSave={handleSave} />
-            <EduAcc/>
+            <EduAcc  onAdd={handleAdd}/>
             <ProfAcc/>
             </div>
-            <Template genr={genral}/>
+            <Template genr={genral} eduIn={edu}/>
         </div>
     
     </>
