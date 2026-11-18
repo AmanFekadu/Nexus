@@ -5,7 +5,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import {faPhone} from '@fortawesome/free-solid-svg-icons'
 import {faLocationPin} from '@fortawesome/free-solid-svg-icons'
 import {faLinkedin} from '@fortawesome/free-brands-svg-icons'
-function Template({genr,eduIn}) {
+function Template({genr,eduIn,prfIn}) {
     
   return (
     <div className={styles.container}>
@@ -47,6 +47,27 @@ function Template({genr,eduIn}) {
               ))}
             </div>
           )}
+        </div>
+
+        <div>
+          {prfIn.length>0 &&
+            <div className={styles.edu}>
+              <h3>Professional Experience</h3>
+              {prfIn.map((item,index)=>(
+                <div key={index} className={styles.edbx}>
+                  <div>
+                    <h4 style={{fontWeight:'normal'}}>{item.srt} - {item.end}</h4>
+                    <h4 style={{fontWeight:'normal'}}>{item.ct},{item.cnt}</h4>
+                  </div>
+                  <div>
+                    <h4>{item.cmp}</h4>
+                    <p style={{fontWeight:'normal'}}>{item.desc}</p>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          }
         </div>
     </div>
   )

@@ -16,9 +16,13 @@ function Interface() {
   })
 
   const [edu,setEdu]=useState([])
+  const [prf,setPrf]=useState([])
 
   const handleAdd=(newed)=>{
     setEdu((prev)=>[...prev,newed])
+  }
+  const handlePrf=(newpr)=>{
+    setPrf((prev)=>[...prev,newpr])
   }
 
   const handleSave=(newInfo)=>{
@@ -30,9 +34,9 @@ function Interface() {
           <div>
             <GenralAcc genInfo={genral} onSave={handleSave} />
             <EduAcc  onAdd={handleAdd}/>
-            <ProfAcc/>
+            <ProfAcc onAdd={handlePrf}/>
             </div>
-            <Template genr={genral} eduIn={edu}/>
+            <Template genr={genral} eduIn={edu} prfIn={prf}/>
         </div>
     
     </>
