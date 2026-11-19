@@ -10,12 +10,12 @@ function Template({genr,eduIn,prfIn}) {
   return (
     <div className={styles.container}>
          <div className={styles.head}>
-            <h3 style={{color:'white'}}>{genr.fullName} </h3>
+            <h3 style={{color:'white', fontSize:'xx-large'}}>{genr.name} </h3>
             <div className={styles.lks}>
           {genr.email && <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faEnvelope}/>{genr.email} </h2>}  
-           {genr.phNum && <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faPhone}/> {genr.phNum}</h2>} 
-           {genr.cp && <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faLocationPin}/> {genr.cp}</h2> } 
-           {genr.lnk &&  <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faLinkedin}/> {genr.lnk}</h2>
+           {genr.phone && <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faPhone}/> {genr.phone}</h2>} 
+           {genr.location && <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faLocationPin}/> {genr.location}</h2> } 
+           {genr.linkedin &&  <h2 style={{color:'white'}}><FontAwesomeIcon style={{color:'white'}} icon={faLinkedin}/> {genr.linkedin}</h2>
             }
             </div>
          </div>
@@ -32,16 +32,19 @@ function Template({genr,eduIn,prfIn}) {
         <div className={styles.edu}>
           {eduIn.length > 0 && (
             <div>
+             {/* <h4 style={{fontWeight:'normal'}}>{item.strt} - {item.end ? {item.end}:'present' }</h4>     would this work */}
               <h3>Education</h3>
               {eduIn.map((item, index) => (
                 <div key={index} className={styles.edbx}>
                   <div>
-                    <h4 style={{fontWeight:'normal'}}>{item.strt} - {item.end}</h4>
-                    <h4 style={{fontWeight:'normal'}}>{item.ct}, {item.cnt}</h4>
+                    <h4 style={{fontWeight:'normal'}}>{item.strt} {item.end ?  `-${item.end}`:'-present'}</h4>
+                    <h4 style={{fontWeight:'normal'}}>{item.location}</h4>
                   </div>
                   <div>
-                    <h4 >{item.sch}</h4>
+                    <h4 >{item.school}</h4>
                     <h4 style={{fontWeight:'normal'}}>{item.deg}</h4>
+                    <h4 style={{ fontWeight: 'normal' }}>{item.field ? ` - ${item.field}` : ''}
+</h4>
                   </div>
                 </div>
               ))}

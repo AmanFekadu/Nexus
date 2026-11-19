@@ -17,26 +17,66 @@ function Interface() {
 
   const [edu,setEdu]=useState([])
   const [prf,setPrf]=useState([])
+  const [cvData,setSvData]=useState({
+    personal:{
+      name:'',
+      email:'',
+      phone:'',
+      location:'',
+      linkedin:'',
+      smry:''
+    },
+    education:[],
+    expr:[],
+    skills:[],
+  })
+  
+  const [activeEduId, setActiveEduId] = useState(null)
 
+  const handleEduChange = (updatedFields) => {
+  if (!activeEduId) {
+    const newId = Date.now()
+    setActiveEduId(newId)
+    setSvData((prev) => ({
+      ...prev,
+      education: [...prev.education, { ...updatedFields, id: newId }],
+    }))
+
+  } else {
+    setSvData((prev) => ({
+      ...prev,
+      education: prev.education.map((item) =>
+        item.id === activeEduId ? { ...item, ...updatedFields } : item
+      ),
+    }))
+  }
+}
+  const handleEduSave = () => {
+  setActiveEduId(null)
+}
   const handleAdd=(newed)=>{
-    setEdu((prev)=>[...prev,newed])
+     setSvData((prev)=>({
+      ...prev,education:[...prev.education,{...newed,id:Date.now()}]
+    }))
   }
   const handlePrf=(newpr)=>{
     setPrf((prev)=>[...prev,newpr])
   }
 
   const handleSave=(newInfo)=>{
-    setGenral(newInfo)
+    setSvData((prev)=>({
+      ...prev,personal:newInfo
+    }))
   }
   return (
     <>
         <div className={styles.container}>
           <div>
-            <GenralAcc genInfo={genral} onSave={handleSave} />
-            <EduAcc  onAdd={handleAdd}/>
+            <GenralAcc genInfo={cvData.personal} onSave={handleSave} />
+            <EduAcc eduIn={handleEduChange}  onAdd={handleEduSave}/>
             <ProfAcc onAdd={handlePrf}/>
             </div>
-            <Template genr={genral} eduIn={edu} prfIn={prf}/>
+            <Template genr={cvData.personal} eduIn={cvData.education} prfIn={prf}/>
         </div>
     
     </>

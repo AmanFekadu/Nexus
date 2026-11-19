@@ -4,15 +4,17 @@ import { faSquareMinus } from '@fortawesome/free-regular-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from '../style/EduAcc.module.css'
-function EduAcc({onAdd}) {
+function EduAcc({ eduIn,onAdd}) {
+
     const initialForm = {
-  deg: '',
-  sch: '',
-  ct: '',
-  cnt: '',
-  strt: '',
-  end: '',
-}
+      deg: '',
+      school: '',
+      field: '',
+      location: '',
+      strt: '',
+      end: '',
+    }
+   
     const [active,setActive]=useState(false)
     const [formData,setFormData]=useState(initialForm)
     const handleClick=()=>{
@@ -21,14 +23,15 @@ function EduAcc({onAdd}) {
 
     const handleChange=(e)=>{
       const {name,value}=e.target
-      setFormData((prev)=>({
-        ...prev,[name]:value
-      }))
+      const update={...formData,[name]:value}
+      setFormData(update)
+      eduIn(update)
+     
     }
 
     const handleSubmit=(e)=>{
       e.preventDefault()
-      onAdd(formData)
+      onAdd()
       setFormData(initialForm)
       e.target.reset()
     }
@@ -41,22 +44,22 @@ function EduAcc({onAdd}) {
        
         <form className={ active? styles.form : styles.hidden} onSubmit={handleSubmit}>
                     <h3>Degree</h3>
-                    <input className={styles.input} type="text" placeholder='Field of study' name='deg' onChange={handleChange}/> <br />
+                    <input className={styles.input} type="text" placeholder='Honor of degree' name='deg' value={formData.deg} onChange={handleChange}/> <br />
                     <h3>School</h3>
-                    <input className={styles.input} type="text" placeholder='Enter school/university' name='sch' onChange={handleChange} /> <br />
-                    <h3>City</h3>
-                    <input className={styles.input} type="text"  placeholder='Enter city' name='ct' onChange={handleChange}/>
+                    <input className={styles.input} type="text" placeholder='Enter school/university' name='school' value={formData.school} onChange={handleChange} /> <br />
+                    <h3>Field</h3>
+                    <input className={styles.input} type="text"  placeholder='Enter ypur filed' name='field' value={formData.field} onChange={handleChange}/>
                     <h3>Country</h3>
-                    <input className={styles.input} type="text" placeholder='Enter country' name='cnt' onChange={handleChange} />
+                    <input className={styles.input} type="text" placeholder='Enter country' name='location' value={formData.location} onChange={handleChange} />
 
                     <div className={styles.div}>
                         <div>
                             <h3>Start Date</h3>
-                            <input type="date" name='strt' onChange={handleChange} />
+                            <input type="date" name='strt' value={formData.strt} onChange={handleChange} />
                         </div>
                         <div>
                             <h3>End Date</h3>
-                            <input type="date" name='end' onChange={handleChange} />
+                            <input type="date" name='end' value={formData.end} onChange={handleChange} />
                         </div>
                     </div>
                     <button className={styles.btn} type='submit'>Save</button>

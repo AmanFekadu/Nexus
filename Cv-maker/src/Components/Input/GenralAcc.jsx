@@ -15,9 +15,10 @@ function GenralAcc({genInfo,onSave}) {
 
     const handleChange=(e)=>{
       const {name,value}=e.target
-      setFormData((prev)=>({
-        ...prev,[name]:value
-      }))
+      const updated={...formData,[name]:value}
+      setFormData(updated)
+      
+      onSave(updated)
     }
 
     const handleSubmit=(e)=>{
@@ -32,15 +33,15 @@ function GenralAcc({genInfo,onSave}) {
 
          <form className={ active? styles.form : styles.hidden} onSubmit={handleSubmit}>
             <h3>Full Name</h3>
-            <input className={styles.input} type="text" required placeholder='Abebe Kebede' value={formData.fullName} name='fullName' onChange={handleChange}/> <br />
+            <input className={styles.input} type="text" required placeholder='Abebe Kebede' value={formData.name} name='name' onChange={handleChange}/> <br />
             <h3>Email</h3>
             <input className={styles.input} type="email" required placeholder='abebekebe34@gmail.com' value={formData.email} name='email' onChange={handleChange}/> <br />
             <h3>Phone Number</h3>
-            <input className={styles.input} type="tel" required placeholder='0911111111' value={formData.phNum} name='phNum' onChange={handleChange}/>
+            <input className={styles.input} type="tel" required placeholder='0911111111' value={formData.phone} name='phone' onChange={handleChange}/>
             <h3>City and Province</h3>
-            <input className={styles.input} type="text" placeholder='Addis Ababa, Ethiopia' value={formData.cp} name='cp'  onChange={handleChange} required/>
+            <input className={styles.input} type="text" placeholder='Addis Ababa, Ethiopia' value={formData.location} name='location'  onChange={handleChange} required/>
             <h3>Linkedln</h3>
-            <input type="text" className={styles.input} name='lnk' value={formData.lnk} onChange={handleChange} />
+            <input type="text" className={styles.input} name='linkedin' value={formData.linkedin} onChange={handleChange} />
             <h3>Professional Summary</h3>
             <textarea  className={styles.input} value={formData.smry} name='smry' onChange={handleChange}></textarea>
             <button className={styles.btn} type='submit'>Save</button>

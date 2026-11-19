@@ -22,13 +22,14 @@
 .head div{
     display: flex;
     gap: 2em;
+    
 }
 
 .lks{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: small;
+    font-size:x-small;
 }
 
 .prf{
