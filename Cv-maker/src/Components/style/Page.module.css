@@ -2,3 +2,13 @@
     display: flex;
     gap: 2em;
 }
+
+.container > div:first-child {
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.container > div:last-child {
+    flex: 1;
+    min-width: 0;
+}

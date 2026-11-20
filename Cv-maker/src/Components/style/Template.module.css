@@ -60,3 +60,26 @@
 .lf{
     flex-shrink: 0;
 }
+
+
+
+.lf {
+    width: 175px;
+    flex-shrink: 0;
+}
+
+.edbx > div:last-child {
+    flex: 1;
+    min-width: 0;
+}
+
+.edbx p,
+.prf p,
+.lks h2 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.edbx + .edbx {
+    margin-top: 1.5em;
+}
