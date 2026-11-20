@@ -32,6 +32,7 @@ function Interface() {
   })
   
   const [activeEduId, setActiveEduId] = useState(null)
+  const [activeProfId,setActiveProfId] = useState(null)
 
   const handleEduChange = (updatedFields) => {
   if (!activeEduId) {
@@ -51,7 +52,28 @@ function Interface() {
     }))
   }
 }
-  const handleEduSave = () => {
+      const handleProfChange = (updatedFields) => {
+    if (!activeEduId) {
+      const newId = Date.now()
+      setActiveProfId(newId)
+      setSvData((prev) => ({
+        ...prev,
+        expr: [...prev.expr, { ...updatedFields, id: newId }],
+      }))
+
+    } else {
+      setSvData((prev) => ({
+        ...prev,
+        expr: prev.expr.map((item) =>
+          item.id === activeProfId ? { ...item, ...updatedFields } : item
+        ),
+      }))
+    }
+  }
+    const handleEduSave = () => {
+  setActiveEduId(null)
+}
+    const handleProfSave = () => {
   setActiveEduId(null)
 }
   const handleAdd=(newed)=>{
@@ -74,9 +96,9 @@ function Interface() {
           <div>
             <GenralAcc genInfo={cvData.personal} onSave={handleSave} />
             <EduAcc eduIn={handleEduChange}  onAdd={handleEduSave}/>
-            <ProfAcc onAdd={handlePrf}/>
+            <ProfAcc onSave={handleProfChange} onAdd={handleProfSave}/>
             </div>
-            <Template genr={cvData.personal} eduIn={cvData.education} prfIn={prf}/>
+            <Template genr={cvData.personal} eduIn={cvData.education} prfIn={cvData.expr}/>
         </div>
     
     </>

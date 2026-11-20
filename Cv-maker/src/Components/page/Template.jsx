@@ -32,12 +32,11 @@ function Template({genr,eduIn,prfIn}) {
         <div className={styles.edu}>
           {eduIn.length > 0 && (
             <div>
-             {/* <h4 style={{fontWeight:'normal'}}>{item.strt} - {item.end ? {item.end}:'present' }</h4>     would this work */}
               <h3>Education</h3>
               {eduIn.map((item, index) => (
                 <div key={index} className={styles.edbx}>
                   <div>
-                    <h4 style={{fontWeight:'normal'}}>{item.strt} {item.end ?  `-${item.end}`:'-present'}</h4>
+                  {item.strt && item.end && <h4 style={{fontWeight:'normal'}}>{item.strt} {item.end ?  `-${item.end}`:'-present'}</h4>}  
                     <h4 style={{fontWeight:'normal'}}>{item.location}</h4>
                   </div>
                   <div>
@@ -53,17 +52,18 @@ function Template({genr,eduIn,prfIn}) {
         </div>
 
         <div>
-          {prfIn.length>0 &&
+          {prfIn.length > 0 &&
             <div className={styles.edu}>
               <h3>Professional Experience</h3>
               {prfIn.map((item,index)=>(
                 <div key={index} className={styles.edbx}>
                   <div>
-                    <h4 style={{fontWeight:'normal'}}>{item.srt} - {item.end}</h4>
-                    <h4 style={{fontWeight:'normal'}}>{item.ct},{item.cnt}</h4>
+                 {item.strt && <h4 style={{fontWeight:'normal'}}>{item.strt} {item.end ?  `-${item.end}`:'-present'}</h4>}   
+                  {item.ct && item.cnt && <h4 style={{fontWeight:'normal'}}>{item.ct},{item.cnt}</h4>}  
                   </div>
                   <div>
                     <h4>{item.cmp}</h4>
+                    <h4 style={{fontWeight:'normal'}}>{item.jT}</h4>
                     <p style={{fontWeight:'normal'}}>{item.desc}</p>
                   </div>
 

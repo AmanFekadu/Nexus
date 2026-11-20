@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
 import styles from '../style/ProfAcc.module.css'
 
-function ProfAcc({onAdd}) {
+function ProfAcc({onSave, onAdd}) {
     const [active,setActive]=useState(false)
     const initalForm={
         'jT':'',
@@ -25,19 +25,18 @@ function ProfAcc({onAdd}) {
         }
 
         const handleChange=(e)=>{
-            const {name,value}=e.target
-            setFormData((prev)=>({
-                ...prev,[name]:value
-      }))
-
-        
+      const {name,value}=e.target
+      const update={...fomData,[name]:value}
+      setFormData(update)
+      onSave(update)
+     
     }
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        onAdd(fomData)
-        setFormData(initalForm)
-        e.target.reset()
-        }
+     const handleSubmit=(e)=>{
+      e.preventDefault()
+      onAdd()
+      setFormData(initalForm)
+      e.target.reset()
+    }
   return (
     <div className={styles.container}>
     
