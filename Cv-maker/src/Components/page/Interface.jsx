@@ -157,8 +157,12 @@ function Interface() {
       setProfForm(emptyProf)
     }
   }
-
+    const handledwld=()=>{
+      window.print()
+    }
   return (
+    <>
+      <button onClick={handledwld} className={styles.btn}>Downlad</button>
     <div className={styles.container}>
       <div>
         <GenralAcc genInfo={cvData.personal} onSave={handleSave} />
@@ -188,6 +192,7 @@ function Interface() {
         prfIn={cvData.expr.filter((item) => !item.hidden)}
       />
     </div>
+    </>
   )
 }
 

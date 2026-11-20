@@ -1,3 +1,10 @@
 html{
     background-color: aliceblue;
 }
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
