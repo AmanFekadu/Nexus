@@ -3,7 +3,7 @@
     height: 100vh;
     background-color: white;
     width: 210mm;
-    min-height: 297mm;
+    min-height: fit-content;
 
 }
 
@@ -44,6 +44,7 @@
 .edbx{
     display: flex;
     gap: 3em;
+
 }
 
 .edu{
@@ -54,4 +55,8 @@
     border-bottom: 1px solid black;
     padding: 0.5em;
 
+}
+
+.lf{
+    flex-shrink: 0;
 }

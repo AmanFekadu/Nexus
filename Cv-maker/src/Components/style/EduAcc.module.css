@@ -45,3 +45,54 @@ margin-bottom: 1em;
     display: flex;
     flex-direction: column;
 }
+
+.savedList {
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.savedItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65em 0.85em;
+    background-color: rgba(134, 138, 135, 0.16);
+    border-radius: 0.5em;
+    gap: 0.5em;
+}
+
+.savedItem span {
+    flex: 1;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.savedItem span:hover {
+    text-decoration: underline;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    flex-shrink: 0;
+}
+
+.actions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25em 0.4em;
+    border-radius: 0.3em;
+    font-size: 0.95rem;
+}
+
+.actions button:hover {
+    background-color: rgba(134, 138, 135, 0.28);
+}
