@@ -6,6 +6,7 @@ import Template from './Template'
 import styles from '../style/Page.module.css'
 import SkillsAcc from '../Input/SkillsAcc'
 
+
 const emptyEdu = {
   deg: '',
   school: '',
@@ -27,6 +28,48 @@ const emptyProf = {
 
 const emptySkill = {
   name: '',
+}
+
+const sampleCvData = {
+  personal: {
+    name: 'Amanuel Fekadu',
+    email: 'amanuel@example.com',
+    phone: '+251 91 234 5678',
+    location: 'Addis Ababa, Ethiopia',
+    linkedin: 'linkedin.com/in/amanuel-fekadu',
+    smry: 'Motivated Computer Science student and front-end developer dedicated to building clean, accessible, and responsive web applications using React, JavaScript, HTML, and CSS. I enjoy breaking down user interfaces into reusable components, managing interactive state smoothly, and creating intuitive user experiences with clear visual hierarchy. Through hands-on projects and practice, I focus on writing maintainable code, refining layout details, and turning ideas into reliable, engaging interfaces across different screen sizes.',
+  },
+  education: [
+    {
+      id: 101,
+      hidden: false,
+      deg: 'B.Sc.',
+      school: 'Admas University',
+      field: 'Computer Science',
+      location: 'Addis Ababa, Ethiopia',
+      strt: '2001-09-01',
+      end: '2020-07-01',
+    },
+  ],
+  expr: [
+    {
+      id: 201,
+      hidden: false,
+      jT: 'Front-End Developer (Projects & Bootcamp)',
+      cmp: 'Self-Directed / Bootcamp Labs',
+      ct: 'Addis Ababa',
+      cnt: 'Ethiopia',
+      strt: '2026-01-15',
+      end: '2026-11-01',
+      desc: 'Built interactive front-end web applications and user interfaces using React, JavaScript, HTML, and CSS with a strong focus on component structure and live state updates. Implemented dynamic forms, item management actions, and clean layout styling so users can see immediate feedback as they interact with the page. Worked carefully on spacing, alignment, and readability across views while keeping the code modular, organized, and easy to extend.',
+    },
+  ],
+  skills: [
+    { id: 301, name: 'React', hidden: false },
+    { id: 302, name: 'JavaScript', hidden: false },
+    { id: 303, name: 'HTML', hidden: false },
+    { id: 304, name: 'CSS', hidden: false },
+  ],
 }
 
 function Interface() {
@@ -219,48 +262,96 @@ const handleDeleteSkill = (id) => {
     setSkillForm(emptySkill)
   }
 }
-  return (
-    <> 
-    <div>
-      <button onClick={handledwld} className={styles.btn}>Downlad</button>
+  const [previewMode, setPreviewMode] = useState(false)
 
-      <div>
-        <button>Sample Data</button>
-        <button>Preiview</button>
-        <button>clear</button>
+const handleLoadSample = () => {
+  setSvData(sampleCvData)
+  setEduForm(emptyEdu)
+  setActiveEduId(null)
+  setProfForm(emptyProf)
+  setActiveProfId(null)
+  setSkillForm(emptySkill)
+  setActiveSkillId(null)
+}
+
+const handleTogglePreview = () => {
+  setPreviewMode((prev) => !prev)
+}
+
+const handleClearAll = () => {
+  setSvData({
+    personal: {
+      name: '',
+      email: '',
+      phone: '',
+      location: '',
+      linkedin: '',
+      smry: '',
+    },
+    education: [],
+    expr: [],
+    skills: [],
+  })
+  setEduForm(emptyEdu)
+  setActiveEduId(null)
+  setProfForm(emptyProf)
+  setActiveProfId(null)
+  setSkillForm(emptySkill)
+  setActiveSkillId(null)
+}
+  return (
+  <>
+    <div className={styles.btns}>
+      <button type="button" onClick={handledwld} className={styles.btn}>
+        Download
+      </button>
+
+      <div className={styles.btnss}>
+        <button type="button" onClick={handleLoadSample} className={styles.opt}>
+          Sample Data
+        </button>
+        <button type="button" onClick={handleTogglePreview} className={styles.opt}>
+          {previewMode ? 'Edit Mode' : 'Preview'} 
+        </button>
+        <button type="button" onClick={handleClearAll} className={styles.opt}>
+          Clear
+        </button>
       </div>
     </div>
+
     <div className={styles.container}>
-      <div>
-        <GenralAcc genInfo={cvData.personal} onSave={handleSave} />
-        <EduAcc
-          formData={eduForm}
-          eduList={cvData.education}
-          onChange={handleEduChange}
-          onSave={handleEduSave}
-          onEdit={handleEditEdu}
-          onToggle={handleToggleEdu}
-          onDelete={handleDeleteEdu}
-        />
-        <ProfAcc
-          formData={profForm}
-          profList={cvData.expr}
-          onChange={handleProfChange}
-          onSave={handleProfSave}
-          onEdit={handleEditProf}
-          onToggle={handleToggleProf}
-          onDelete={handleDeleteProf}
-        />
-        <SkillsAcc
-          formData={skillForm}
-          skillList={cvData.skills}
-          onChange={handleSkillChange}
-          onSave={handleSkillSave}
-          onEdit={handleEditSkill}
-          onToggle={handleToggleSkill}
-          onDelete={handleDeleteSkill}
-        />
-      </div>
+      {!previewMode && (
+        <div>
+          <GenralAcc genInfo={cvData.personal} onSave={handleSave} />
+          <EduAcc
+            formData={eduForm}
+            eduList={cvData.education}
+            onChange={handleEduChange}
+            onSave={handleEduSave}
+            onEdit={handleEditEdu}
+            onToggle={handleToggleEdu}
+            onDelete={handleDeleteEdu}
+          />
+          <ProfAcc
+            formData={profForm}
+            profList={cvData.expr}
+            onChange={handleProfChange}
+            onSave={handleProfSave}
+            onEdit={handleEditProf}
+            onToggle={handleToggleProf}
+            onDelete={handleDeleteProf}
+          />
+          <SkillsAcc
+            formData={skillForm}
+            skillList={cvData.skills}
+            onChange={handleSkillChange}
+            onSave={handleSkillSave}
+            onEdit={handleEditSkill}
+            onToggle={handleToggleSkill}
+            onDelete={handleDeleteSkill}
+          />
+        </div>
+      )}
 
       <Template
         genr={cvData.personal}
@@ -269,8 +360,8 @@ const handleDeleteSkill = (id) => {
         skillsIn={cvData.skills.filter((item) => !item.hidden)}
       />
     </div>
-    </>
-  )
+  </>
+)
 }
 
 export default Interface

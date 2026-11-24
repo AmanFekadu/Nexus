@@ -1,67 +1,55 @@
-.container{
-    
+.container {
     height: 100vh;
     background-color: white;
     width: 210mm;
     min-height: fit-content;
-
 }
 
-.head{
+.head {
     background-color: rgb(44, 56, 74);
-    width: inherit;
+    width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     line-height: 1em;
-
-
 }
-.head div{
+
+.head div {
     display: flex;
     gap: 2em;
-    
 }
 
-.lks{
+.lks {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size:x-small;
+    font-size: x-small;
 }
 
-.prf{
+.prf {
     margin: 4em;
 }
 
-.prf h3{
+.prf h3 {
     border-bottom: 1px solid black;
     padding: 0.5em;
 }
 
-.edbx{
+.edbx {
     display: flex;
     gap: 3em;
-
 }
 
-.edu{
+.edu {
     margin: 4em;
 }
 
-.edu h3{
+.edu h3 {
     border-bottom: 1px solid black;
     padding: 0.5em;
-
 }
-
-.lf{
-    flex-shrink: 0;
-}
-
-
 
 .lf {
     width: 175px;
