@@ -4,6 +4,7 @@ import GenralAcc from '../Input/GenralAcc'
 import ProfAcc from '../Input/ProfAcc'
 import Template from './Template'
 import styles from '../style/Page.module.css'
+import SkillsAcc from '../Input/SkillsAcc'
 
 const emptyEdu = {
   deg: '',
@@ -22,6 +23,10 @@ const emptyProf = {
   strt: '',
   end: '',
   desc: '',
+}
+
+const emptySkill = {
+  name: '',
 }
 
 function Interface() {
@@ -160,9 +165,71 @@ function Interface() {
     const handledwld=()=>{
       window.print()
     }
+  const [skillForm, setSkillForm] = useState(emptySkill)
+  const [activeSkillId, setActiveSkillId] = useState(null)
+    const handleSkillChange = (e) => {
+  const { name, value } = e.target
+  const updated = { ...skillForm, [name]: value }
+  setSkillForm(updated)
+
+  if (!activeSkillId) {
+    const newId = Date.now()
+    setActiveSkillId(newId)
+    setSvData((prev) => ({
+      ...prev,
+      skills: [...prev.skills, { ...updated, id: newId, hidden: false }],
+    }))
+  } else {
+    setSvData((prev) => ({
+      ...prev,
+      skills: prev.skills.map((item) =>
+        item.id === activeSkillId ? { ...item, ...updated } : item
+      ),
+    }))
+  }
+}
+
+const handleSkillSave = (e) => {
+  e.preventDefault()
+  setActiveSkillId(null)
+  setSkillForm(emptySkill)
+}
+
+const handleEditSkill = (item) => {
+  setActiveSkillId(item.id)
+  setSkillForm(item)
+}
+
+const handleToggleSkill = (id) => {
+  setSvData((prev) => ({
+    ...prev,
+    skills: prev.skills.map((item) =>
+      item.id === id ? { ...item, hidden: !item.hidden } : item
+    ),
+  }))
+}
+
+const handleDeleteSkill = (id) => {
+  setSvData((prev) => ({
+    ...prev,
+    skills: prev.skills.filter((item) => item.id !== id),
+  }))
+  if (activeSkillId === id) {
+    setActiveSkillId(null)
+    setSkillForm(emptySkill)
+  }
+}
   return (
-    <>
+    <> 
+    <div>
       <button onClick={handledwld} className={styles.btn}>Downlad</button>
+
+      <div>
+        <button>Sample Data</button>
+        <button>Preiview</button>
+        <button>clear</button>
+      </div>
+    </div>
     <div className={styles.container}>
       <div>
         <GenralAcc genInfo={cvData.personal} onSave={handleSave} />
@@ -184,12 +251,22 @@ function Interface() {
           onToggle={handleToggleProf}
           onDelete={handleDeleteProf}
         />
+        <SkillsAcc
+          formData={skillForm}
+          skillList={cvData.skills}
+          onChange={handleSkillChange}
+          onSave={handleSkillSave}
+          onEdit={handleEditSkill}
+          onToggle={handleToggleSkill}
+          onDelete={handleDeleteSkill}
+        />
       </div>
 
       <Template
         genr={cvData.personal}
         eduIn={cvData.education.filter((item) => !item.hidden)}
         prfIn={cvData.expr.filter((item) => !item.hidden)}
+        skillsIn={cvData.skills.filter((item) => !item.hidden)}
       />
     </div>
     </>

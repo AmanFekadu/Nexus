@@ -13,7 +13,7 @@ const formatDate = (dateStr) => {
   return `${day}-${shortMonth}, ${year}`
 }
 
-function Template({ genr, eduIn, prfIn }) {
+function Template({ genr, eduIn, prfIn,skillsIn }) {
   return (
     <div className={styles.container}>
       <div className={styles.head}>
@@ -102,6 +102,23 @@ function Template({ genr, eduIn, prfIn }) {
             ))}
           </div>
         )}
+      </div>
+
+      <div>
+        {skillsIn && skillsIn.length > 0 && (
+  <div className={styles.edu}>
+        <h3>Skills</h3>
+        <div className={styles.skillsList}>
+          {skillsIn.map((item) =>
+            item.name ? (
+              <span key={item.id} className={styles.skillTag}>
+                {item.name}
+              </span>
+            ) : null
+          )}
+        </div>
+      </div>
+    )}
       </div>
     </div>
   )

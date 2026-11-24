@@ -83,3 +83,19 @@
 .edbx + .edbx {
     margin-top: 1.5em;
 }
+
+.skillsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6em;
+    margin-top: 0.8em;
+}
+
+.skillTag {
+    background-color: rgba(44, 56, 74, 0.1);
+    color: rgb(44, 56, 74);
+    padding: 0.4em 0.85em;
+    border-radius: 0.4em;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
